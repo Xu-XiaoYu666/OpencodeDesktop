@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风花雪月 · 多彩云南——完整版旅游攻略</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS Variables & Reset
+   ============================================================ */
+:root {
+  --gold: #d4a840;
+  --gold-deep: #b8860b;
+  --gold-light: #e8d5a3;
+  --gold-pale: #f7efd6;
+  --teal: #1a7a8c;
+  --teal-deep: #0d5b6a;
+  --teal-light: #4db8c9;
+  --teal-pale: #d4edf2;
+  --red: #c0392b;
+  --red-deep: #922b21;
+  --red-light: #e74c3c;
+  --red-pale: #fdecea;
+  --cream: #f5f0e8;
+  --cream-deep: #e8dfd2;
+  --white: #ffffff;
+  --dark: #1a1a2e;
+  --dark-soft: #2d2d44;
+  --gray: #6b7280;
+  --gray-light: #d1d5db;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-gold: 0 4px 20px rgba(212,168,64,0.25);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --font-display: 'Noto Serif SC', 'ZCOOL XiaoWei', serif;
+  --font-body: 'Noto Sans SC', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%; width: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  background: #0d0d1a;
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ============================================================
+   Presentation Wrapper
+   ============================================================ */
+.presentation-wrapper {
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a15 100%);
+  overflow: hidden;
+}
+
+.presentation {
+  position: relative;
+  width: min(96vw, 1280px);
+  aspect-ratio: 16 / 9;
+  max-height: 96vh;
+  background: var(--cream);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(212,168,64,0.15), 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   Slides Container
+   ============================================================ */
+.slides-container {
+  position: relative;
+  width: 100%; height: 100%;
+}
+
+.slide {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  opacity: 0; transform: scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: clamp(30px, 5%, 60px) clamp(40px, 7%, 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.slide.active {
+  opacity: 1; transform: scale(1);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.slide.exit-left {
+  opacity: 0; transform: translateX(-4%) scale(0.96);
+  transition: opacity 0.35s ease-in, transform 0.35s ease-in;
+}
+
+.slide.exit-right {
+  opacity: 0; transform: translateX(4%) scale(0.96);
+  transition: opacity 0.35s ease-in, transform 0.35s ease-in;
+}
+
+.slide.enter-right {
+  opacity: 0; transform: translateX(4%) scale(0.96);
+}
+
+.slide.enter-left {
+  opacity: 0; transform: translateX(-4%) scale(0.96);
+}
+
+/* ============================================================
+   Page Number
+   ============================================================ */
+.page-num {
+  position: absolute; bottom: 18px; right: 28px;
+  font-size: 13px; color: var(--gray);
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+/* ============================================================
+   Slide 1: Cover
+   ============================================================ */
+.slide-cover {
+  background: linear-gradient(145deg, #f5f0e8 0%, #e8d5a3 25%, #d4a840 45%, #1a7a8c 75%, #0d5b6a 100%);
+  justify-content: center; align-items: center;
+  text-align: center; position: relative;
+  overflow: hidden;
+}
+
+.slide-cover::before {
+  content: ''; position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(212,168,64,0.12) 0%, transparent 50%);
+  animation: coverShimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes coverShimmer {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(2%, 1%) rotate(3deg); }
+}
+
+.slide-cover .ornament-top,
+.slide-cover .ornament-bottom {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+}
+
+.slide-cover .ornament-top { top: 18%; }
+.slide-cover .ornament-bottom { bottom: 22%; }
+
+.slide-cover .cover-content {
+  position: relative; z-index: 2;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-cover .cover-pretitle {
+  font-size: clamp(14px, 1.5vw, 18px);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.85);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+}
+
+.slide-cover .cover-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.slide-cover .cover-subtitle {
+  font-size: clamp(15px, 1.6vw, 22px);
+  color: rgba(255,255,255,0.9);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-family: var(--font-body);
+}
+
+.slide-cover .cover-footer {
+  position: absolute; bottom: 40px; left: 0; right: 0;
+  text-align: center; z-index: 2;
+  font-size: 14px; color: rgba(255,255,255,0.65);
+  letter-spacing: 0.15em;
+  font-family: var(--font-body);
+}
+
+/* Diamond decorative elements */
+.slide-cover .diamond {
+  position: absolute; width: 40px; height: 40px;
+  background: rgba(255,255,255,0.15);
+  transform: rotate(45deg);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.slide-cover .diamond-1 { top: 15%; left: 10%; width: 30px; height: 30px; }
+.slide-cover .diamond-2 { top: 22%; right: 12%; width: 24px; height: 24px; }
+.slide-cover .diamond-3 { bottom: 30%; left: 18%; width: 20px; height: 20px; }
+.slide-cover .diamond-4 { bottom: 18%; right: 22%; width: 35px; height: 35px; }
+
+/* ============================================================
+   Slide 2: TOC
+   ============================================================ */
+.slide-toc {
+  background: var(--cream);
+  justify-content: center;
+}
+
+.slide-toc .toc-header {
+  text-align: center;
+  margin-bottom: clamp(20px, 3%, 36px);
+}
+
+.slide-toc .toc-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 36px);
+  font-weight: 700;
+  color: var(--dark);
+  position: relative;
+  display: inline-block;
+}
+
+.slide-toc .toc-title::after {
+  content: ''; display: block;
+  width: 60%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.slide-toc .toc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: clamp(8px, 1.2vw, 16px);
+  flex: 1;
+  max-height: 75%;
+}
+
+.slide-toc .toc-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(10px, 2vw, 20px);
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  cursor: default;
+}
+
+.slide-toc .toc-card:nth-child(3n+1) { border-left-color: var(--gold); }
+.slide-toc .toc-card:nth-child(3n+2) { border-left-color: var(--teal); }
+.slide-toc .toc-card:nth-child(3n+3) { border-left-color: var(--red); }
+
+.slide-toc .toc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.slide-toc .toc-num {
+  width: 36px; height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px;
+  color: #fff;
+  font-family: var(--font-display);
+}
+
+.slide-toc .toc-card:nth-child(3n+1) .toc-num { background: var(--gold); }
+.slide-toc .toc-card:nth-child(3n+2) .toc-num { background: var(--teal); }
+.slide-toc .toc-card:nth-child(3n+3) .toc-num { background: var(--red); }
+
+.slide-toc .toc-label {
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 500;
+  color: var(--dark-soft);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Section Title (common)
+   ============================================================ */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.section-subtitle {
+  font-size: clamp(12px, 1.1vw, 15px);
+  color: var(--gray);
+  font-weight: 400;
+  margin-bottom: clamp(14px, 2.5%, 30px);
+  letter-spacing: 0.04em;
+}
+
+.section-underline {
+  width: 50px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+/* ============================================================
+   Slide 3: 云南简介 (4 cards)
+   ============================================================ */
+.slide-intro {
+  background: linear-gradient(180deg, var(--cream) 0%, #edeadf 100%);
+}
+
+.slide-intro .cards-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(10px, 1.4vw, 20px);
+  flex: 1;
+}
+
+.slide-intro .intro-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(14px, 2vw, 28px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.slide-intro .intro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.slide-intro .intro-card .card-icon {
+  font-size: clamp(28px, 3vw, 44px);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.slide-intro .intro-card .card-label {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.slide-intro .intro-card .card-desc {
+  font-size: clamp(12px, 1.1vw, 15px);
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.slide-intro .intro-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 0;
+  width: 5px; height: 100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.slide-intro .intro-card:nth-child(1)::after { background: var(--gold); }
+.slide-intro .intro-card:nth-child(2)::after { background: var(--teal); }
+.slide-intro .intro-card:nth-child(3)::after { background: var(--red); }
+.slide-intro .intro-card:nth-child(4)::after { background: var(--gold-deep); }
+
+/* ============================================================
+   Slide 4: 出行时间&准备 (two columns)
+   ============================================================ */
+.slide-prep {
+  background: var(--cream);
+}
+
+.slide-prep .prep-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 30px);
+  flex: 1;
+}
+
+.slide-prep .prep-col {
+  display: flex; flex-direction: column;
+}
+
+.slide-prep .prep-col-title {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold-light);
+}
+
+.slide-prep .season-list {
+  display: flex; flex-direction: column;
+  gap: 8px; flex: 1;
+}
+
+.slide-prep .season-item {
+  display: flex; align-items: center;
+  gap: 12px;
+  padding: clamp(8px, 1vw, 14px) clamp(10px, 1.5vw, 18px);
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.slide-prep .season-item:hover { transform: translateX(4px); }
+
+.slide-prep .season-dot {
+  width: 12px; height: 12px; min-width: 12px;
+  border-radius: 50%;
+}
+
+.slide-prep .season-dot.spring { background: #e8a0bf; }
+.slide-prep .season-dot.summer { background: #68b984; }
+.slide-prep .season-dot.autumn { background: var(--gold); }
+.slide-prep .season-dot.winter { background: #8bbccc; }
+
+.slide-prep .season-info .season-name {
+  font-weight: 700; font-size: 14px;
+  color: var(--dark); margin-bottom: 2px;
+}
+
+.slide-prep .season-info .season-desc {
+  font-size: 12px; color: var(--gray);
+}
+
+.slide-prep .checklist {
+  display: flex; flex-direction: column;
+  gap: 6px; flex: 1;
+}
+
+.slide-prep .check-item {
+  display: flex; align-items: center;
+  gap: 10px; padding: clamp(6px, 0.8vw, 10px) 12px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  font-size: clamp(12px, 1.1vw, 14px);
+  color: var(--dark-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.slide-prep .check-icon {
+  color: var(--teal); font-weight: 700; font-size: 16px;
+}
+
+/* ============================================================
+   Slide 5: 游玩路线 (4 route cards)
+   ============================================================ */
+.slide-routes {
+  background: linear-gradient(180deg, #f0ece2 0%, var(--cream) 50%);
+}
+
+.slide-routes .routes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.2vw, 18px);
+  flex: 1;
+}
+
+.slide-routes .route-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(14px, 1.6vw, 24px);
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-routes .route-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.slide-routes .route-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.slide-routes .route-card:nth-child(1)::before { background: var(--gold); }
+.slide-routes .route-card:nth-child(2)::before { background: var(--teal); }
+.slide-routes .route-card:nth-child(3)::before { background: var(--red); }
+.slide-routes .route-card:nth-child(4)::before { background: var(--gold-deep); }
+
+.slide-routes .route-icon {
+  font-size: clamp(30px, 2.8vw, 44px);
+  margin: 10px 0 8px;
+}
+
+.slide-routes .route-days {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.slide-routes .route-label {
+  font-size: clamp(11px, 1vw, 13px);
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.slide-routes .route-cities {
+  font-weight: 600; font-size: clamp(11px, 1vw, 14px);
+  color: var(--dark-soft);
+  line-height: 1.5;
+}
+
+.slide-routes .route-badge {
+  margin-top: auto;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.slide-routes .route-card:nth-child(1) .route-badge { background: var(--gold-pale); color: var(--gold-deep); }
+.slide-routes .route-card:nth-child(2) .route-badge { background: var(--teal-pale); color: var(--teal-deep); }
+.slide-routes .route-card:nth-child(3) .route-badge { background: var(--red-pale); color: var(--red-deep); }
+.slide-routes .route-card:nth-child(4) .route-badge { background: #e8f5e9; color: #2e7d32; }
+
+/* ============================================================
+   Slide 6 & 7: Two-column spot cards
+   ============================================================ */
+.slide-kunming, .slide-lijiang {
+  background: var(--cream);
+}
+
+.slide-kunming .spot-layout,
+.slide-lijiang .spot-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 30px);
+  flex: 1;
+}
+
+.spot-col {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(14px, 2vw, 28px);
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+}
+
+.slide-kunming .spot-col { border-top: 4px solid var(--gold); }
+.slide-kunming .spot-col + .spot-col { border-top-color: var(--teal); }
+.slide-lijiang .spot-col { border-top: 4px solid var(--red); }
+.slide-lijiang .spot-col + .spot-col { border-top-color: var(--gold); }
+
+.spot-col-title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.spot-col-title .spot-icon { font-size: 1.2em; }
+
+.spot-list {
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+
+.spot-item {
+  display: flex; align-items: flex-start;
+  gap: 10px;
+  padding: clamp(6px, 0.8vw, 12px);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #fafaf7 0%, #f5f2eb 100%);
+  transition: transform 0.2s;
+}
+
+.spot-item:hover { transform: translateX(3px); }
+
+.spot-marker {
+  width: 8px; height: 8px; min-width: 8px;
+  border-radius: 50%; margin-top: 6px;
+}
+
+.spot-item:nth-child(odd) .spot-marker { background: var(--gold); }
+.spot-item:nth-child(even) .spot-marker { background: var(--teal); }
+
+.spot-info .spot-name {
+  font-weight: 600; font-size: clamp(13px, 1.1vw, 15px);
+  color: var(--dark); margin-bottom: 2px;
+}
+
+.spot-info .spot-desc {
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--gray); line-height: 1.5;
+}
+
+/* ============================================================
+   Slide 8: 西双版纳 (3 featured cards)
+   ============================================================ */
+.slide-xishuangbanna {
+  background: linear-gradient(160deg, #f8f4eb 0%, #eaf5f3 50%, #fef9f0 100%);
+}
+
+.slide-xishuangbanna .banna-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.6vw, 24px);
+  flex: 1;
+  align-items: stretch;
+}
+
+.slide-xishuangbanna .banna-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: clamp(18px, 2.5vw, 32px);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all 0.35s ease;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+.slide-xishuangbanna .banna-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.slide-xishuangbanna .banna-card::before {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+}
+
+.slide-xishuangbanna .banna-card:nth-child(1)::before { background: linear-gradient(90deg, #f39c12, #e74c3c); }
+.slide-xishuangbanna .banna-card:nth-child(2)::before { background: linear-gradient(90deg, #27ae60, #1a7a8c); }
+.slide-xishuangbanna .banna-card:nth-child(3)::before { background: linear-gradient(90deg, #d4a840, #c0392b); }
+
+.slide-xishuangbanna .banna-emoji {
+  font-size: clamp(40px, 4vw, 60px);
+  margin-bottom: 12px;
+}
+
+.slide-xishuangbanna .banna-name {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.6vw, 24px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.slide-xishuangbanna .banna-desc {
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Slide 9: 美食合集 (6-grid)
+   ============================================================ */
+.slide-food {
+  background: linear-gradient(180deg, var(--cream) 0%, #f9f5ed 100%);
+}
+
+.slide-food .food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(8px, 1vw, 14px);
+  flex: 1;
+}
+
+.slide-food .food-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(10px, 1.5vw, 20px);
+  display: flex; align-items: center;
+  gap: clamp(10px, 1.5vw, 18px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.slide-food .food-card:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+.slide-food .food-emoji {
+  font-size: clamp(28px, 2.8vw, 44px);
+  min-width: 48px; text-align: center;
+}
+
+.slide-food .food-info .food-name {
+  font-weight: 700; font-size: clamp(13px, 1.2vw, 16px);
+  color: var(--dark); margin-bottom: 3px;
+}
+
+.slide-food .food-info .food-tag {
+  font-size: 11px; color: var(--gold-deep);
+  font-weight: 500;
+}
+
+/* ============================================================
+   Slide 10: 住宿交通
+   ============================================================ */
+.slide-stay {
+  background: var(--cream);
+}
+
+.slide-stay .stay-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(16px, 2vw, 30px);
+  flex: 1;
+}
+
+.slide-stay .stay-block {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: clamp(14px, 2vw, 26px);
+  box-shadow: var(--shadow-sm);
+}
+
+.slide-stay .stay-block-title {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.slide-stay .stay-items {
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+
+.slide-stay .stay-item {
+  display: flex; align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: #fafaf7;
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--dark-soft);
+}
+
+.slide-stay .stay-icon {
+  font-size: 18px; min-width: 24px; text-align: center;
+}
+
+.slide-stay .transport-block {
+  border-left: 4px solid var(--teal);
+}
+
+.slide-stay .transport-items {
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+
+.slide-stay .transport-item {
+  display: flex; align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--teal-pale);
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--teal-deep);
+  font-weight: 500;
+}
+
+/* ============================================================
+   Slide 11: 预算参考 (3 big number cards)
+   ============================================================ */
+.slide-budget {
+  background: linear-gradient(180deg, #f5f2eb 0%, var(--cream) 60%);
+}
+
+.slide-budget .budget-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 28px);
+  flex: 1;
+  align-items: center;
+}
+
+.slide-budget .budget-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: clamp(18px, 2.5vw, 36px);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.slide-budget .budget-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.slide-budget .budget-card.featured {
+  border: 3px solid var(--gold);
+  box-shadow: var(--shadow-gold);
+  transform: scale(1.06);
+}
+
+.slide-budget .budget-card.featured:hover { transform: scale(1.08); }
+
+.slide-budget .budget-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--red);
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.slide-budget .budget-days {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.slide-budget .budget-label {
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.slide-budget .budget-amount {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+.slide-budget .budget note {
+  font-size: 11px; color: var(--gray);
+  font-style: italic;
+}
+
+/* ============================================================
+   Slide 12: 避坑指南
+   ============================================================ */
+.slide-warning {
+  background: linear-gradient(180deg, #fef9f0 0%, #fdf3e4 50%, #fef9f0 100%);
+}
+
+.slide-warning .warn-list {
+  display: flex; flex-direction: column;
+  gap: clamp(6px, 0.8vw, 12px);
+  flex: 1;
+  justify-content: center;
+}
+
+.slide-warning .warn-item {
+  display: flex; align-items: center;
+  gap: 12px;
+  padding: clamp(10px, 1.2vw, 18px) clamp(14px, 2vw, 24px);
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border-left: 5px solid var(--red-light);
+  font-size: clamp(13px, 1.1vw, 15px);
+  color: var(--dark-soft);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+  line-height: 1.5;
+}
+
+.slide-warning .warn-item:hover { transform: translateX(4px); }
+
+.slide-warning .warn-icon {
+  font-size: 20px; min-width: 24px; text-align: center;
+  color: var(--red);
+}
+
+.slide-warning .warn-item:nth-child(even) {
+  border-left-color: var(--gold);
+}
+
+.slide-warning .warn-item:nth-child(even) .warn-icon {
+  color: var(--gold-deep);
+}
+
+/* ============================================================
+   Slide 13: 结尾
+   ============================================================ */
+.slide-end {
+  background: linear-gradient(145deg, #1a7a8c 0%, #0d5b6a 40%, #1a1a2e 100%);
+  justify-content: center; align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-end::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(212,168,64,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 50%);
+}
+
+.slide-end .end-quotes {
+  position: relative; z-index: 2;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-end .end-line {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-weight: 600;
+  line-height: 2.2;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 4px;
+}
+
+.slide-end .end-divider {
+  width: 60px; height: 1px;
+  background: rgba(255,255,255,0.3);
+  margin: 20px auto;
+}
+
+.slide-end .end-thanks {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+  animation: fadeInUp 1s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Decorative circles */
+.slide-end .end-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  z-index: 1;
+}
+
+.slide-end .end-circle.c1 { width: 200px; height: 200px; top: -60px; right: -40px; }
+.slide-end .end-circle.c2 { width: 300px; height: 300px; bottom: -100px; left: -80px; }
+.slide-end .end-circle.c3 { width: 100px; height: 100px; top: 50%; left: 10%; }
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+.nav-controls {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 20px;
+  z-index: 20;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+
+.nav-btn {
+  width: 36px; height: 36px;
+  border: none; border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+
+.nav-btn:hover {
+  background: var(--gold);
+  color: #fff;
+  box-shadow: var(--shadow-gold);
+}
+
+.nav-btn:active { transform: scale(0.92); }
+
+.nav-dots {
+  display: flex; gap: 6px;
+  align-items: center;
+}
+
+.nav-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.nav-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 5px;
+}
+
+.nav-dot:hover { background: var(--gold-light); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  .slide { padding: 20px 24px; }
+
+  .slide-toc .toc-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .slide-toc .toc-card { padding: 8px; gap: 6px; }
+  .slide-toc .toc-num { width: 26px; height: 26px; min-width: 26px; font-size: 12px; }
+  .slide-toc .toc-label { font-size: 10px; }
+
+  .slide-intro .cards-4 { grid-template-columns: 1fr; gap: 8px; }
+  .slide-prep .prep-layout { grid-template-columns: 1fr; }
+  .slide-routes .routes-grid { grid-template-columns: repeat(2, 1fr); }
+  .slide-kunming .spot-layout,
+  .slide-lijiang .spot-layout { grid-template-columns: 1fr; }
+  .slide-xishuangbanna .banna-cards { grid-template-columns: 1fr; }
+  .slide-food .food-grid { grid-template-columns: repeat(2, 1fr); }
+  .slide-stay .stay-layout { grid-template-columns: 1fr; }
+  .slide-budget .budget-cards { grid-template-columns: 1fr; }
+  .slide-budget .budget-card.featured { transform: scale(1); }
+
+  .page-num { bottom: 60px; right: 16px; font-size: 11px; }
+  .nav-controls { bottom: 8px; gap: 12px; padding: 6px 14px; }
+  .nav-btn { width: 30px; height: 30px; font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .slide-toc .toc-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+.slide::-webkit-scrollbar { width: 4px; }
+.slide::-webkit-scrollbar-track { background: transparent; }
+.slide::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 4px; }
+
+</style>
+</head>
+<body>
+
+<div class="presentation-wrapper">
+  <div class="presentation" id="presentation">
+    <div class="slides-container" id="slidesContainer">
+
+      <!-- ============ Slide 1: 封面 ============ -->
+      <div class="slide slide-cover active" data-index="0">
+        <div class="diamond diamond-1"></div>
+        <div class="diamond diamond-2"></div>
+        <div class="diamond diamond-3"></div>
+        <div class="diamond diamond-4"></div>
+        <div class="ornament-top"></div>
+        <div class="cover-content">
+          <div class="cover-pretitle">YUNNAN · CHINA</div>
+          <div class="cover-title">风花雪月 · 多彩云南<br>完整版旅游攻略</div>
+          <div class="cover-subtitle">治愈身心的西南秘境之旅</div>
+        </div>
+        <div class="ornament-bottom"></div>
+        <div class="cover-footer">旅行攻略制作</div>
+        <div class="page-num">1 / 13</div>
+      </div>
+
+      <!-- ============ Slide 2: 目录 ============ -->
+      <div class="slide slide-toc" data-index="1">
+        <div class="toc-header">
+          <div class="toc-title">目 录</div>
+        </div>
+        <div class="toc-grid">
+          <div class="toc-card"><div class="toc-num">1</div><div class="toc-label">云南简介</div></div>
+          <div class="toc-card"><div class="toc-num">2</div><div class="toc-label">出行时间 & 准备</div></div>
+          <div class="toc-card"><div class="toc-num">3</div><div class="toc-label">游玩路线推荐</div></div>
+          <div class="toc-card"><div class="toc-num">4</div><div class="toc-label">昆明 & 大理景点</div></div>
+          <div class="toc-card"><div class="toc-num">5</div><div class="toc-label">丽江 & 香格里拉</div></div>
+          <div class="toc-card"><div class="toc-num">6</div><div class="toc-label">西双版纳</div></div>
+          <div class="toc-card"><div class="toc-num">7</div><div class="toc-label">美食合集</div></div>
+          <div class="toc-card"><div class="toc-num">8</div><div class="toc-label">住宿 & 交通</div></div>
+          <div class="toc-card"><div class="toc-num">9</div><div class="toc-label">预算参考 & 避坑</div></div>
+        </div>
+        <div class="page-num">2 / 13</div>
+      </div>
+
+      <!-- ============ Slide 3: 云南简介 ============ -->
+      <div class="slide slide-intro" data-index="2">
+        <div class="section-title">云南简介</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">彩云之南，梦开始的地方</div>
+        <div class="cards-4">
+          <div class="intro-card">
+            <span class="card-icon">🏔️</span>
+            <div class="card-label">地理特点</div>
+            <div class="card-desc">地处云贵高原，海拔落差大，气候四季如春。北依雪山、南临热带雨林，一省之内可观四季景观。</div>
+          </div>
+          <div class="intro-card">
+            <span class="card-icon">🏞️</span>
+            <div class="card-label">风景特色</div>
+            <div class="card-desc">雪山、湖泊、古城交相辉映。玉龙雪山的壮美、洱海的静谧、丽江古城的浪漫，处处皆画卷。</div>
+          </div>
+          <div class="intro-card">
+            <span class="card-icon">🎭</span>
+            <div class="card-label">人文特色</div>
+            <div class="card-desc">25 个少数民族聚居地，白族扎染、傣族泼水节、纳西族东巴文化，多元文化交融共生。</div>
+          </div>
+          <div class="intro-card">
+            <span class="card-icon">🌿</span>
+            <div class="card-label">旅行标签</div>
+            <div class="card-desc">治愈 · 慢生活 · 风花雪月 · 有风的地方。适合放慢脚步，感受时间流淌的美好。</div>
+          </div>
+        </div>
+        <div class="page-num">3 / 13</div>
+      </div>
+
+      <!-- ============ Slide 4: 出行时间 & 准备 ============ -->
+      <div class="slide slide-prep" data-index="3">
+        <div class="section-title">出行时间 & 行前准备</div>
+        <div class="section-underline"></div>
+        <div class="prep-layout">
+          <div class="prep-col">
+            <div class="prep-col-title">🌤️ 最佳出行季节</div>
+            <div class="season-list">
+              <div class="season-item">
+                <div class="season-dot spring"></div>
+                <div class="season-info">
+                  <div class="season-name">3月 - 5月 · 春</div>
+                  <div class="season-desc">花开成海，罗平油菜花、大理樱花，气候宜人。</div>
+                </div>
+              </div>
+              <div class="season-item">
+                <div class="season-dot summer"></div>
+                <div class="season-info">
+                  <div class="season-name">6月 - 8月 · 夏</div>
+                  <div class="season-desc">避暑胜地，香格里拉草原花海，普者黑荷花盛开。</div>
+                </div>
+              </div>
+              <div class="season-item">
+                <div class="season-dot autumn"></div>
+                <div class="season-info">
+                  <div class="season-name">9月 - 11月 · 秋 ✨最佳</div>
+                  <div class="season-desc">天高云淡，色彩斑斓，雨水少、日照足，摄影天堂。</div>
+                </div>
+              </div>
+              <div class="season-item">
+                <div class="season-dot winter"></div>
+                <div class="season-info">
+                  <div class="season-name">12月 - 2月 · 冬</div>
+                  <div class="season-desc">版纳温暖如春，梅里雪山日照金山，红嘴鸥来滇池过冬。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="prep-col">
+            <div class="prep-col-title">🎒 行前准备清单</div>
+            <div class="checklist">
+              <div class="check-item"><span class="check-icon">✓</span> 防晒用品：高倍防晒霜、墨镜、遮阳帽（高原紫外线强）</div>
+              <div class="check-item"><span class="check-icon">✓</span> 衣物准备：薄外套+短袖（昼夜温差大），舒适徒步鞋</div>
+              <div class="check-item"><span class="check-icon">✓</span> 常用药品：感冒药、肠胃药、创可贴、晕车药</div>
+              <div class="check-item"><span class="check-icon">✓</span> 保湿用品：润唇膏、保湿霜（高原干燥）</div>
+              <div class="check-item"><span class="check-icon">✓</span> 电子产品：充电宝、相机、备用SD卡</div>
+              <div class="check-item"><span class="check-icon">🪪</span> 重要证件：身份证、学生证（景点半价）、驾照（如需租车）</div>
+              <div class="check-item"><span class="check-icon">💰</span> 现金备用：部分小摊和偏远地区只收现金</div>
+            </div>
+          </div>
+        </div>
+        <div class="page-num">4 / 13</div>
+      </div>
+
+      <!-- ============ Slide 5: 游玩路线 ============ -->
+      <div class="slide slide-routes" data-index="4">
+        <div class="section-title">游玩路线推荐</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">根据假期长短，选择最适合的路线</div>
+        <div class="routes-grid">
+          <div class="route-card">
+            <span class="route-icon">⏱️</span>
+            <div class="route-days">3 天</div>
+            <div class="route-label">短途精华</div>
+            <div class="route-cities">昆明 → 大理 → 丽江</div>
+            <span class="route-badge">高效打卡</span>
+          </div>
+          <div class="route-card">
+            <span class="route-icon">⭐</span>
+            <div class="route-days">5 天</div>
+            <div class="route-label">经典环线</div>
+            <div class="route-cities">昆明 → 大理 → 丽江<br>深度慢游</div>
+            <span class="route-badge">经典之选</span>
+          </div>
+          <div class="route-card">
+            <span class="route-icon">🏆</span>
+            <div class="route-days">7 天</div>
+            <div class="route-label">深度畅游</div>
+            <div class="route-cities">昆明 → 大理 → 丽江<br>→ 香格里拉</div>
+            <span class="route-badge">最推荐</span>
+          </div>
+          <div class="route-card">
+            <span class="route-icon">🌴</span>
+            <div class="route-days">4 天</div>
+            <div class="route-label">四季避寒</div>
+            <div class="route-cities">西双版纳<br>热带风情</div>
+            <span class="route-badge">冬日首选</span>
+          </div>
+        </div>
+        <div class="page-num">5 / 13</div>
+      </div>
+
+      <!-- ============ Slide 6: 昆明 & 大理 ============ -->
+      <div class="slide slide-kunming" data-index="5">
+        <div class="section-title">昆明 & 大理景点</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">"下关风，上关花，苍山雪，洱海月"</div>
+        <div class="spot-layout">
+          <div class="spot-col">
+            <div class="spot-col-title"><span class="spot-icon">🌸</span> 昆明 · 春城</div>
+            <div class="spot-list">
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">滇池 / 海埂大坝</div>
+                  <div class="spot-desc">冬季红嘴鸥聚集，喂海鸥、看日落，免费开放。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">石林风景区</div>
+                  <div class="spot-desc">世界自然遗产，喀斯特地貌奇观，距昆明1.5小时车程。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">斗南花市</div>
+                  <div class="spot-desc">亚洲最大鲜花交易市场，鲜花按斤卖，感受春城浪漫。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="spot-col">
+            <div class="spot-col-title"><span class="spot-icon">🏯</span> 大理 · 风花雪月</div>
+            <div class="spot-list">
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">洱海环湖</div>
+                  <div class="spot-desc">租电动车或骑行环湖，S湾、龙龛码头日出绝美。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">大理古城</div>
+                  <div class="spot-desc">人民路逛小店、洋人街喝咖啡，感受文艺慢生活。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">喜洲古镇 & 双廊</div>
+                  <div class="spot-desc">喜洲看白族建筑和稻田，双廊观苍山洱海全景。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-num">6 / 13</div>
+      </div>
+
+      <!-- ============ Slide 7: 丽江 & 香格里拉 ============ -->
+      <div class="slide slide-lijiang" data-index="6">
+        <div class="section-title">丽江 & 香格里拉</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">"心中的日月，梦中的天堂"</div>
+        <div class="spot-layout">
+          <div class="spot-col">
+            <div class="spot-col-title"><span class="spot-icon">🏔️</span> 丽江</div>
+            <div class="spot-list">
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">玉龙雪山</div>
+                  <div class="spot-desc">纳西族神山，乘大索道登4680m，蓝月谷如仙境。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">丽江古城（大研古镇）</div>
+                  <div class="spot-desc">世界文化遗产，四方街、大水车，夜晚酒吧街热闹非凡。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">束河古镇 & 云杉坪</div>
+                  <div class="spot-desc">束河更安静原始，云杉坪高山草甸适合拍照发呆。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="spot-col">
+            <div class="spot-col-title"><span class="spot-icon">🏯</span> 香格里拉</div>
+            <div class="spot-list">
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">普达措国家公园</div>
+                  <div class="spot-desc">属都湖徒步、高原牧场，秋天层林尽染美如油画。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">松赞林寺</div>
+                  <div class="spot-desc">"小布达拉宫"，清晨阳光洒在金顶上，极为震撼。</div>
+                </div>
+              </div>
+              <div class="spot-item">
+                <div class="spot-marker"></div>
+                <div class="spot-info">
+                  <div class="spot-name">纳帕海 / 依拉草原</div>
+                  <div class="spot-desc">夏为海冬为草原，骑马环湖，远眺雪山，无比治愈。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-num">7 / 13</div>
+      </div>
+
+      <!-- ============ Slide 8: 西双版纳 ============ -->
+      <div class="slide slide-xishuangbanna" data-index="7">
+        <div class="section-title">西双版纳</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">热带雨林 · 傣族风情 · 东南亚异域感</div>
+        <div class="banna-cards">
+          <div class="banna-card">
+            <div class="banna-emoji">✨🏮</div>
+            <div class="banna-name">星光夜市</div>
+            <div class="banna-desc">亚洲最大夜市，湄公河畔灯火璀璨，穿傣服拍照、尝遍东南亚小吃，夜晚比白天更精彩。</div>
+          </div>
+          <div class="banna-card">
+            <div class="banna-emoji">🌴🔬</div>
+            <div class="banna-name">中科院植物园</div>
+            <div class="banna-desc">中国最大热带植物园，王莲池、百花园、热带雨林区，仿佛走进绿野仙踪。</div>
+          </div>
+          <div class="banna-card">
+            <div class="banna-emoji">🐘🌿</div>
+            <div class="banna-name">野象谷</div>
+            <div class="banna-desc">亚洲象栖息地，高空观象栈道、大象表演，运气好还能看到野生象群出没。</div>
+          </div>
+        </div>
+        <div class="page-num">8 / 13</div>
+      </div>
+
+      <!-- ============ Slide 9: 美食合集 ============ -->
+      <div class="slide slide-food" data-index="8">
+        <div class="section-title">云南美食合集</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">舌尖上的云南，每一口都是惊喜</div>
+        <div class="food-grid">
+          <div class="food-card">
+            <span class="food-emoji">🍜</span>
+            <div class="food-info">
+              <div class="food-name">过桥米线</div>
+              <div class="food-tag">云南头号名片 · 滚烫鲜香</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <span class="food-emoji">🍄</span>
+            <div class="food-info">
+              <div class="food-name">野生菌火锅</div>
+              <div class="food-tag">雨季限定 · 鲜美至极</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <span class="food-emoji">🧀</span>
+            <div class="food-info">
+              <div class="food-name">大理乳扇</div>
+              <div class="food-tag">牛奶做成扇子 · 烤/炸两吃</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <span class="food-emoji">🌸</span>
+            <div class="food-info">
+              <div class="food-name">鲜花饼</div>
+              <div class="food-tag">玫瑰入馅 · 云南伴手礼之王</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <span class="food-emoji">🌶️🐔</span>
+            <div class="food-info">
+              <div class="food-name">傣味舂鸡脚</div>
+              <div class="food-tag">酸辣开胃 · 夜市必吃</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <span class="food-emoji">🍚🐔</span>
+            <div class="food-info">
+              <div class="food-name">手抓饭·菠萝饭·汽锅鸡</div>
+              <div class="food-tag">傣味盛宴 · 一桌吃遍云南</div>
+            </div>
+          </div>
+        </div>
+        <div class="page-num">9 / 13</div>
+      </div>
+
+      <!-- ============ Slide 10: 住宿 & 交通 ============ -->
+      <div class="slide slide-stay" data-index="9">
+        <div class="section-title">住宿推荐 & 交通指南</div>
+        <div class="section-underline"></div>
+        <div class="stay-layout">
+          <div class="stay-block">
+            <div class="stay-block-title">🏨 住宿推荐</div>
+            <div class="stay-items">
+              <div class="stay-item">
+                <span class="stay-icon">🌊</span>
+                <span>大理 · 洱海边民宿 — 推窗见海，日出日落尽收眼底</span>
+              </div>
+              <div class="stay-item">
+                <span class="stay-icon">🏘️</span>
+                <span>丽江 · 古城客栈 — 纳西庭院，感受千年古城韵味</span>
+              </div>
+              <div class="stay-item">
+                <span class="stay-icon">🌴</span>
+                <span>西双版纳 · 告庄西双景 — 近星光夜市，泳池酒店性价比高</span>
+              </div>
+              <div class="stay-item">
+                <span class="stay-icon">💡</span>
+                <span>Tips：提前1-2周预订，旺季价格翻倍；多看真实评价</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-block transport-block">
+            <div class="stay-block-title">🚗 交通指南</div>
+            <div class="transport-items">
+              <div class="transport-item">
+                <span class="stay-icon">🚄</span>
+                <span>高铁出行 — 昆明⇋大理2h，昆明⇋丽江3h，方便快捷</span>
+              </div>
+              <div class="transport-item">
+                <span class="stay-icon">🛵</span>
+                <span>租车 / 骑行 — 大理环洱海推荐电动车，丽江古城步行即可</span>
+              </div>
+              <div class="transport-item">
+                <span class="stay-icon">🚕</span>
+                <span>网约车 — 各城市均可用，价格透明，不推荐路边黑车</span>
+              </div>
+              <div class="transport-item">
+                <span class="stay-icon">✈️</span>
+                <span>飞机 — 昆明长水机场为枢纽，版纳/丽江/香格里拉也有机场</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-num">10 / 13</div>
+      </div>
+
+      <!-- ============ Slide 11: 预算参考 ============ -->
+      <div class="slide slide-budget" data-index="10">
+        <div class="section-title">预算参考</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">含住宿、门票、餐饮、交通（不含往返大交通）</div>
+        <div class="budget-cards">
+          <div class="budget-card">
+            <div class="budget-days">3 天</div>
+            <div class="budget-label">短途精华游</div>
+            <div class="budget-amount">800 - 1200 元</div>
+            <div class="budget-note">适合周末说走就走</div>
+          </div>
+          <div class="budget-card featured">
+            <div class="budget-badge">🌟 最推荐</div>
+            <div class="budget-days">7 天</div>
+            <div class="budget-label">深度全景游</div>
+            <div class="budget-amount">2500 - 3500 元</div>
+            <div class="budget-note">体验最完整的云南</div>
+          </div>
+          <div class="budget-card">
+            <div class="budget-days">5 天</div>
+            <div class="budget-label">经典环线游</div>
+            <div class="budget-amount">1500 - 2200 元</div>
+            <div class="budget-note">性价比最优选择</div>
+          </div>
+        </div>
+        <div class="page-num">11 / 13</div>
+      </div>
+
+      <!-- ============ Slide 12: 避坑指南 ============ -->
+      <div class="slide slide-warning" data-index="11">
+        <div class="section-title">⚠️ 避坑指南</div>
+        <div class="section-underline"></div>
+        <div class="section-subtitle">前人踩过的坑，你就不用再踩了</div>
+        <div class="warn-list">
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>不要相信路边"低价一日游"拉客，大概率有购物陷阱，选择正规平台预订。</span>
+          </div>
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>玉龙雪山旺季大索道票非常抢手，务必提前3天在小程序"丽江旅游集团"抢票。</span>
+          </div>
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>不要在景区购买"天然玉石""野生药材"，绝大多数是工艺品和普通草药。</span>
+          </div>
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>大理租车/电动车务必拍照留证车身原有划痕，避免还车时被讹诈。</span>
+          </div>
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>高原地区第一天不要洗澡、不要剧烈运动，给身体适应海拔的时间。</span>
+          </div>
+          <div class="warn-item">
+            <span class="warn-icon">⚠</span>
+            <span>不要在古城主街正餐消费，往小巷走两分钟，价格便宜一半味道更地道。</span>
+          </div>
+        </div>
+        <div class="page-num">12 / 13</div>
+      </div>
+
+      <!-- ============ Slide 13: 结尾 ============ -->
+      <div class="slide slide-end" data-index="12">
+        <div class="end-circle c1"></div>
+        <div class="end-circle c2"></div>
+        <div class="end-circle c3"></div>
+        <div class="end-quotes">
+          <div class="end-line">云南，一半烟火，一半诗意</div>
+          <div class="end-line">有风的地方，治愈所有疲惫</div>
+          <div class="end-line">奔赴彩云之南，赴一场山海与温柔的约会</div>
+          <div class="end-divider"></div>
+          <div class="end-thanks">感谢观看</div>
+        </div>
+        <div class="page-num">13 / 13</div>
+      </div>
+
+    </div><!-- /slides-container -->
+
+    <!-- Navigation -->
+    <div class="nav-controls">
+      <button class="nav-btn" id="prevBtn" title="上一页">◀</button>
+      <div class="nav-dots" id="navDots"></div>
+      <button class="nav-btn" id="nextBtn" title="下一页">▶</button>
+    </div>
+  </div><!-- /presentation -->
+</div><!-- /presentation-wrapper -->
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  const navDots = document.getElementById('navDots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const presentation = document.getElementById('presentation');
+
+  // Build dot navigation
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+    dot.addEventListener('click', () => goToSlide(i));
+    navDots.appendChild(dot);
+  }
+
+  function updateDots() {
+    const dots = navDots.querySelectorAll('.nav-dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+  }
+
+  function goToSlide(index) {
+    if (index === currentIndex || isTransitioning) return;
+
+    const direction = index > currentIndex ? 'right' : 'left';
+    const oldSlide = slides[currentIndex];
+    const newSlide = slides[index];
+
+    isTransitioning = true;
+
+    // Remove all transition classes
+    slides.forEach(s => {
+      s.classList.remove('exit-left', 'exit-right', 'enter-left', 'enter-right', 'active');
+    });
+
+    // Set exit animation on old slide
+    oldSlide.classList.add(direction === 'right' ? 'exit-left' : 'exit-right');
+
+    // Set enter animation on new slide
+    newSlide.classList.add(direction === 'right' ? 'enter-right' : 'enter-left');
+
+    // Force reflow then activate
+    void newSlide.offsetWidth;
+
+    newSlide.classList.remove('enter-right', 'enter-left');
+    newSlide.classList.add('active');
+
+    currentIndex = index;
+    updateDots();
+
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500);
+  }
+
+  function nextSlide() {
+    if (currentIndex < totalSlides - 1) {
+      goToSlide(currentIndex + 1);
+    }
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      goToSlide(currentIndex - 1);
+    }
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      prevSlide();
+    }
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  presentation.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  presentation.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+    const absDiffX = Math.abs(diffX);
+    const absDiffY = Math.abs(diffY);
+
+    // Only trigger if horizontal swipe is dominant
+    if (absDiffX > absDiffY && absDiffX > 40) {
+      if (diffX < -30) {
+        nextSlide();
+      } else if (diffX > 30) {
+        prevSlide();
+      }
+    }
+  }
+
+  // Click on slide edges for navigation (visual feedback area)
+  // Not needed since we have buttons, but keep as fallback
+  presentation.addEventListener('click', (e) => {
+    const target = e.target;
+    // Don't navigate if clicking on buttons or dots
+    if (target.closest('.nav-btn') || target.closest('.nav-dot') ||
+        target.closest('button') || target.closest('a')) return;
+
+    const rect = presentation.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+
+    if (x < width * 0.15) {
+      prevSlide();
+    } else if (x > width * 0.85) {
+      nextSlide();
+    }
+  });
+
+  console.log('%c风花雪月 · 多彩云南 %c旅游攻略已就绪',
+    'color: #d4a840; font-size: 20px; font-weight: bold;',
+    'color: #1a7a8c; font-size: 16px;');
+  console.log('%c共 ' + totalSlides + ' 页 | 支持键盘翻页 · 触屏滑动 · 点击边缘翻页',
+    'color: #6b7280; font-size: 13px;');
+})();
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 ## 一、已安装技能（.opencode/skills/）
 
-当前共 **32 个技能**。
+当前共 **33 个技能**。
 
 ### 开发流程（Superpowers 系列）— 14 个
 
@@ -62,6 +62,14 @@
 
 > 来源：[linxuan-sys/opencode-skills-chinese](https://github.com/linxuan-sys/opencode-skills-chinese) ⭐134 — 2026-05-28 安装
 
+### 错误反思 — 1 个
+
+| 技能 | 来源 | 用途 |
+|------|------|------|
+| aristotle | [alexwwang](https://github.com/alexwwang/aristotle) ⭐14 | `/aristotle` 触发：5-Why 根因分析，自动生成改进规则，持续学习 |
+
+> 2026-05-28 安装
+
 ---
 
 ## 二、热门推荐（未安装，值得关注）
@@ -72,7 +80,7 @@
 |------|------|------|------|
 | 1 | zrt-ai-lab/opencode-skills | 213 | 26 个国内实用技能：飞书/抖音/视频剪辑/小红书 |
 | 2 | antongulin/opencode-skill-creator | 103 | 技能开发工具链，eval-driven 自动优化 |
-| 3 | alexwwang/aristotle | 14 | AI 错误反思学习系统，5-Why 根因分析 |
+| 3 | alexwwang/aristotle | 14 | AI 错误反思学习系统，5-Why 根因分析 | ✅ 已安装 |
 
 ### 推荐
 
